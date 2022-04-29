@@ -1,11 +1,14 @@
 import React from 'react'
+import styled from 'styled-components';
 
-export const UnsplashImage = () => {
+const Img = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+`;
+
+export const UnsplashImage = ({url, key}) => {
   return (
-    <div>
-        <h1>Unsplash Image</h1>
-
-    </div>
+    <Img src={url} key={key} alt="" />
   )
 }
-
