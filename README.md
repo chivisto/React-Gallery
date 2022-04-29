@@ -1,1 +1,3 @@
 # React-Gallery
+
+Isaac Covarrubias
