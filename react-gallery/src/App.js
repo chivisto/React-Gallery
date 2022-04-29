@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {Heading} from './components/Heading';
-import {Loader} from './components/Loader';
-import {UnsplashImage} from './components/UnsplashImage';
+import React, { useState, useEffect } from 'react';
+import { Heading } from './components/Heading';
+import { Loader } from './components/Loader';
+import { UnsplashImage } from './components/UnsplashImage';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 import axios from 'axios';
 import styled from 'styled-components';
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 //Style
 const GlobalStyle = createGlobalStyle`
@@ -35,23 +36,33 @@ function App() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
+    fetchImages();
+  }, [])
+
+  const fetchImages = () => {
     const apiURL = "https://api.unsplash.com";
     const apiKey = "uXbbsQH1xTfKD32n9VZGycYFyH20yIQpSJFha1aAv7s";
     axios
-    .get(`${apiURL}/photos/random?client_id=${apiKey}&count=10`)
-    .then(res => setImages([...images, ...res.data]))
-  }, [])
+      .get(`${apiURL}/photos/random?client_id=${apiKey}&count=10`)
+      .then(res => setImages([...images, ...res.data]))
+  }
 
   return (
     <div className="App">
       <Heading />
       <GlobalStyle />
-      <Loader />
-      <WrapperImg>
-        {images.map(image => (
-          <UnsplashImage url={image.urls.thumb} key={image.id} />
-        ))}
-      </WrapperImg>
+      <InfiniteScroll
+        dataLength={images.length}
+        next={fetchImages}
+        hasMore={true}
+        loader={<Loader />}
+      >
+        <WrapperImg>
+          {images.map(image => (
+            <UnsplashImage url={image.urls.thumb} key={image.id} />
+          ))}
+        </WrapperImg>
+      </InfiniteScroll>
     </div>
   );
 }

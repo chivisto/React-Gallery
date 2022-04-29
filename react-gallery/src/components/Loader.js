@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Loading = styled.div`
+  text-align: center;
+
   .lds-ring {
     display: inline-block;
     position: relative;
@@ -18,7 +20,7 @@ const Loading = styled.div`
     border: 8px solid #fff;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
+    border-color: black transparent transparent transparent;
   }
   .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
