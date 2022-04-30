@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Unsplash, { toJson } from 'unsplash-js';
-
+import Unsplash, { toJson } from "unsplash-js";
 
 const Form = styled.form`
     max-width: 70rem;
@@ -28,14 +27,29 @@ const Button = styled.button`
     border: none;
 `;
 
+
 export default function SearchPhotos() {
+    const unsplash = new Unsplash({
+        accessKey: 'uXbbsQH1xTfKD32n9VZGycYFyH20yIQpSJFha1aAv7s',
+    });
 
     const [query, setQuery] = useState("");
+    const [pics, setPics] = useState([]);
     console.log(query);
 
+    const searchPhotos = async (e) => {
+        e.preventDefault();
+
+        unsplash.search
+            .photos(query, 1, 20)
+            .then(toJson)
+            .then((json) => {
+                setPics(json.results);
+            });
+    };
     return (
         <>
-            <Form className='form'>
+            <Form className='form' onSubmit={searchPhotos}>
                 <label className="label" htmlFor="query">
                     {" "}
                 </label>
@@ -51,6 +65,17 @@ export default function SearchPhotos() {
                     Search
                 </Button>
             </Form>
+            <div className="card-list">
+                {pics.map((pic) => <div className="card">
+                    <img
+                        className="card--image"
+                        alt={pic.alt_description}
+                        src={pic.urls.full}
+                        width="50%"
+                        height="50%"
+                    ></img>
+                </div>)}
+            </div>
         </>
     )
 }
