@@ -8,6 +8,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import axios from 'axios';
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
+import SearchPhotos from './components/searchPhotos';
 
 //Style
 const GlobalStyle = createGlobalStyle`
