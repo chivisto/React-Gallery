@@ -52,6 +52,7 @@ function App() {
     <div className="App">
       <Heading />
       <GlobalStyle />
+      <SearchPhotos />
       <InfiniteScroll
         dataLength={images.length}
         next={fetchImages}
