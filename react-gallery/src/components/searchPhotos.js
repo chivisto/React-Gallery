@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Unsplash, { toJson } from "unsplash-js";
+
 
 const Form = styled.form`
     max-width: 70rem;
@@ -27,12 +29,13 @@ const Button = styled.button`
 `;
 
 export default function SearchPhotos() {
-    const [query, setQuery] = useState(initialState);
+
+    const [query, setQuery] = useState("");
     console.log(query);
 
     return (
         <>
-            <Form>
+            <Form className='form'>
                 <label className="label" htmlFor="query">
                     {" "}
                 </label>
