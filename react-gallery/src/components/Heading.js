@@ -16,7 +16,6 @@ export const Heading = () => {
   return (
     <Header>
       <H1>React Gallery</H1>
-      <p>React Image Gallery from API</p>
       <p>Isaac Covarrubias</p>
     </Header>
   )
