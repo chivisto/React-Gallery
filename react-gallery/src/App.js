@@ -67,9 +67,7 @@ function App() {
         <H1>Main Feed:</H1>
       <Heart />
         <WrapperImg>
-          {images.map(image => (
-            <UnsplashImage url={image.urls.thumb} key={image.id} />
-          ))}
+          {images.map(image => (<><UnsplashImage url={image.urls.thumb} key={image.id} /> <Heart /></>))}
         </WrapperImg>
       </InfiniteScroll>
     </div>
