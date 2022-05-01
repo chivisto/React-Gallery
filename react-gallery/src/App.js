@@ -32,6 +32,11 @@ const WrapperImg = styled.section`
   grid-auto-rows: 300px;
 `;
 
+const H1 = styled.h1`
+  max-width: 70rem;
+  margin: 4rem auto;
+`;
+
 
 function App() {
   const [images, setImages] = useState([]);
@@ -59,6 +64,7 @@ function App() {
         hasMore={true}
         loader={<Loader />}
       >
+        <H1>Main Feed:</H1>
         <WrapperImg>
           {images.map(image => (
             <UnsplashImage url={image.urls.thumb} key={image.id} />
