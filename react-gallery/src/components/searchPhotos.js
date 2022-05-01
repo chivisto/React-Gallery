@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Unsplash, { toJson } from "unsplash-js";
+import { Loader } from './Loader';
 
 const Form = styled.form`
     max-width: 70rem;
@@ -27,6 +28,25 @@ const Button = styled.button`
     border: none;
 `;
 
+const WrapperImg = styled.section`
+    max-width: 70rem;
+    margin: 4rem auto;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 300px;
+`;
+
+const Img = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+`;
+
+const H2 = styled.h2`
+  max-width: 70rem;
+  margin: 4rem auto;
+`;
 
 export default function SearchPhotos() {
     const unsplash = new Unsplash({
@@ -57,7 +77,7 @@ export default function SearchPhotos() {
                     type="text"
                     name="query"
                     className="input"
-                    placeholder={`Try "dog" or "apple"`}
+                    placeholder={`Search..."`}
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                 />
@@ -65,17 +85,16 @@ export default function SearchPhotos() {
                     Search
                 </Button>
             </Form>
-            <div className="card-list">
-                {pics.map((pic) => <div className="card">
-                    <img
+            <H2>Search Results:</H2>
+            <WrapperImg className="card-list">
+                {pics.map((pic) => <div className="card" key={pic.id}>
+                    <Img
                         className="card--image"
                         alt={pic.alt_description}
                         src={pic.urls.full}
-                        width="50%"
-                        height="50%"
-                    ></img>
+                    ></Img>
                 </div>)}
-            </div>
+            </WrapperImg>
         </>
     )
 }
