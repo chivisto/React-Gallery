@@ -4,7 +4,6 @@ import { Loader } from './components/Loader';
 import { UnsplashImage } from './components/UnsplashImage';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-
 import axios from 'axios';
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
