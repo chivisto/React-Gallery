@@ -8,6 +8,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 import SearchPhotos from './components/searchPhotos';
+import Heart from './components/Heart';
 
 //Style
 const GlobalStyle = createGlobalStyle`
@@ -64,6 +65,7 @@ function App() {
         loader={<Loader />}
       >
         <H1>Main Feed:</H1>
+      <Heart />
         <WrapperImg>
           {images.map(image => (
             <UnsplashImage url={image.urls.thumb} key={image.id} />
