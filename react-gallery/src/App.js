@@ -31,13 +31,19 @@ const WrapperImg = styled.section`
   margin: 4rem auto;
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-auto-rows: 300px;
 `;
 
 const H1 = styled.h1`
   max-width: 70rem;
   margin: 4rem auto;
+`;
+
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  display: absolute;
 `;
 
 
@@ -78,7 +84,7 @@ function App() {
         <WrapperImg>
         <FileUpload />
           {images.map(image => 
-            (<><UnsplashImage url={image.urls.thumb} key={image.id} /> <Download /></>))}
+            (<><UnsplashImage url={image.urls.thumb} key={image.id} /><Div><Download /><Heart /></Div></>))}
         </WrapperImg>
       </InfiniteScroll>
     </div>
