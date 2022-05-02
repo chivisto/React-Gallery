@@ -20,17 +20,17 @@ class Heart extends Component {
     };
     render() {
         return (
-            <Div className="container">
+            <div className="container">
                 <center>
-                    <div onClick={() => this.toggle()}>
+                    <Div onClick={() => this.toggle()}>
                         {this.state.liked === false ? (
                             <FontAwesomeIcon icon={faHeartBroken} color="black" border="1px solid black" />
                         ) : (
-                            <FontAwesomeIcon icon={faHeart} color="red" border="1px solid black"/>
+                            <FontAwesomeIcon icon={faHeart} color="red" border="1px solid black" />
                         )}
-                    </div>
+                    </Div>
                 </center>
-            </Div>
+            </div>
         );
     }
 }
