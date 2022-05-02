@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 import SearchPhotos from './components/searchPhotos';
 import Heart from './components/Heart';
+import { FileUpload } from './components/Upload';
 
 //Style
 const GlobalStyle = createGlobalStyle`
@@ -30,7 +31,7 @@ const WrapperImg = styled.section`
   margin: 4rem auto;
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-auto-rows: 300px;
 `;
 
@@ -75,6 +76,7 @@ function App() {
       >
         <H1>Main Feed:</H1>
         <WrapperImg>
+        <FileUpload />
           {images.map(image => 
             (<><UnsplashImage url={image.urls.thumb} key={image.id} /> <Download /></>))}
         </WrapperImg>
