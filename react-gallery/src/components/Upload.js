@@ -28,7 +28,7 @@ export const FileUpload = () => {
         <Div id="upload-box">
             <H3>Upload Image:</H3>
             <input type="file" onChange={handleUpload} />
-            <P>Filename: {file.name}</P>
+            <P>File Name: {file.name}</P>
             <p>{file && <ImageThumb image={file} />}</p>
         </Div>
     );
