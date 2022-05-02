@@ -3,6 +3,8 @@ import { Heading } from './components/Heading';
 import { Loader } from './components/Loader';
 import { UnsplashImage } from './components/UnsplashImage';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { saveAs } from 'file-saver';
+
 
 import axios from 'axios';
 import styled from 'styled-components';
@@ -53,6 +55,13 @@ function App() {
       .then(res => setImages([...images, ...res.data]))
   }
 
+  const Download = () => {
+    const downloadImage = () => {
+        saveAs(`${images.map(image => (<>{image.urls.raw}</>))}` , 'image.jpg')
+    }
+    return <button onClick={downloadImage}>Download</button>
+}
+
   return (
     <div className="App">
       <Heading />
@@ -66,7 +75,8 @@ function App() {
       >
         <H1>Main Feed:</H1>
         <WrapperImg>
-          {images.map(image => (<><UnsplashImage url={image.urls.thumb} key={image.id} /></>))}
+          {images.map(image => 
+            (<><UnsplashImage url={image.urls.thumb} key={image.id} /> <Download /></>))}
         </WrapperImg>
       </InfiniteScroll>
     </div>
