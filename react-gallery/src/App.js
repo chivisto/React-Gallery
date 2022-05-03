@@ -70,10 +70,11 @@ function App() {
 
   const Download = () => {
     const downloadImage = () => {
-      for (let i = 0; i < imgURL.length; i++) {
-        let red = imgURL[i];
+      for (var i = 0; i < imgURL.length; i++) {
+        var red = imgURL[i];
         saveAs(red, 'image.jpg');
-      } //TRY USING VAR INSTEAD OF LET TOMORROW
+      } //TRY USING VAR
+      //saveAs(red, 'image.jpg');
     }
     return <button onClick={downloadImage}>Download</button>
   }
