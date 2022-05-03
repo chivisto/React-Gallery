@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
 const Div = styled.div`
-    width: 15px;
-    height: 15px;
-    position: relative;
+    width: auto;
+    height: auto;
+    position: absolute;
+    background-color: white;
 `;
 
 class Heart extends Component {

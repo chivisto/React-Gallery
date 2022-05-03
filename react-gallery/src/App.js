@@ -32,7 +32,6 @@ const WrapperImg = styled.section`
   display: grid;
   grid-gap: 1em;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 300px;
 `;
 
 const H1 = styled.h1`
@@ -43,7 +42,10 @@ const H1 = styled.h1`
 const Div = styled.div`
   display: flex;
   flex-direction: column;
-  display: absolute;
+  margin-bottom: 2rem;
+  height: auto;
+  width: 100%;
+  position: relative;
 `;
 
 
@@ -64,10 +66,10 @@ function App() {
 
   const Download = () => {
     const downloadImage = () => {
-        saveAs(`${images.map(image => (<>{image.urls.raw}</>))}` , 'image.jpg')
+      saveAs(`${images.map(image => (<>{image.urls.raw}</>))}`, 'image.jpg')
     }
     return <button onClick={downloadImage}>Download</button>
-}
+  }
 
   return (
     <div className="App">
@@ -82,9 +84,16 @@ function App() {
       >
         <H1>Main Feed:</H1>
         <WrapperImg>
-        <FileUpload />
-          {images.map(image => 
-            (<><UnsplashImage url={image.urls.thumb} key={image.id} /><Div><Download /><Heart /></Div></>))}
+          <FileUpload />
+          {images.map(image =>
+          (<>
+            <Div>
+              <Heart />
+              <UnsplashImage url={image.urls.thumb} key={image.id}/>
+              <p className="like"> Amount of Likes ❤️ {image.likes}</p>
+              <Download />
+            </Div>
+          </>))}
         </WrapperImg>
       </InfiniteScroll>
     </div>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Unsplash, { toJson } from "unsplash-js";
-import { Loader } from './Loader';
+import Heart from './Heart';
+import Download from '../App';
 
 const Form = styled.form`
     max-width: 70rem;
@@ -34,7 +35,6 @@ const WrapperImg = styled.section`
     display: grid;
     grid-gap: 1em;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-rows: 300px;
 `;
 
 const Img = styled.img`
@@ -88,6 +88,7 @@ export default function SearchPhotos() {
             <H2>Search Results:</H2>
             <WrapperImg className="card-list">
                 {pics.map((pic) => <div className="card" key={pic.id}>
+                    <Heart />
                     <Img
                         className="card--image"
                         alt={pic.alt_description}
