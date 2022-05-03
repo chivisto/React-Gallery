@@ -95,7 +95,8 @@ export default function SearchPhotos() {
                         className="card--image"
                         alt={pic.alt_description}
                         src={pic.urls.full}
-                    ></Img><p className="like"> Amount of Likes ❤️ {pic.likes}</p>
+                    ></Img>
+                    <p className="like" margin-bottom="30px"> Amount of Likes ❤️ {pic.likes}</p>
                 </div>)}
             </WrapperImg>
         </>

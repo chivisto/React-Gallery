@@ -64,16 +64,16 @@ function App() {
   }
 
   const imgURL = images.map((download)=>{   
-    //console.log(download.urls.raw)
-    return download.urls.raw;   
+    //console.log(download.urls.full)
+    return download.urls.full;   
 });   
-
-console.log(imgURL[1])
 
   const Download = () => {
     const downloadImage = () => {
-     saveAs(`${imgURL}`, 'image.jpg');
-      console.log(imgURL) 
+      for(let i = 0; i < imgURL.length; i++){
+        let red = imgURL[i];
+        saveAs(red, 'image.jpg');
+      }
     }
     return <button onClick={downloadImage}>Download</button>
   }
