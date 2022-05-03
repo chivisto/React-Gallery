@@ -63,14 +63,14 @@ function App() {
       .then(res => setImages([...images, ...res.data]))
   }
 
-  const imgURL = images.map((download)=>{   
+  const imgURL = images.map((download) => {
     //console.log(download.urls.full)
-    return download.urls.full;   
-});   
+    return download.urls.full;
+  });
 
   const Download = () => {
     const downloadImage = () => {
-      for(let i = 0; i < imgURL.length; i++){
+      for (let i = 0; i < imgURL.length; i++) {
         let red = imgURL[i];
         saveAs(red, 'image.jpg');
       }
@@ -96,7 +96,7 @@ function App() {
           (<>
             <Div>
               <Heart />
-              <UnsplashImage url={image.urls.thumb} key={image.id}/>
+              <UnsplashImage url={image.urls.thumb} key={image.id} />
               <p className="like"> Amount of Likes ❤️ {image.likes}</p>
               <Download />
             </Div>
