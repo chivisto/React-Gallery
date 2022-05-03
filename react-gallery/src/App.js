@@ -13,7 +13,6 @@ import SearchPhotos from './components/searchPhotos';
 import Heart from './components/Heart';
 import { FileUpload } from './components/Upload';
 
-//Style
 const GlobalStyle = createGlobalStyle`
   *{
     margin: 0px;
@@ -69,15 +68,15 @@ function App() {
     return download.urls.raw;   
 });   
 
+console.log(imgURL[1])
+
   const Download = () => {
     const downloadImage = () => {
-      saveAs(`${imgURL}`, 'image.jpg')
-      
-      //console.log(imgURL) 
+     saveAs(`${imgURL}`, 'image.jpg');
+      console.log(imgURL) 
     }
     return <button onClick={downloadImage}>Download</button>
   }
-
 
   return (
     <div className="App">
