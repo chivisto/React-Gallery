@@ -66,7 +66,7 @@ function App() {
 
   const Download = () => {
     const downloadImage = () => {
-      saveAs(`${images.map(image => (<>{image.urls.raw}</>))}`, 'image.jpg')
+      saveAs(`${images.image.urls.raw}`, 'image.jpg')
     }
     return <button onClick={downloadImage}>Download</button>
   }

@@ -35,6 +35,7 @@ const WrapperImg = styled.section`
     display: grid;
     grid-gap: 1em;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 300px;
 `;
 
 const Img = styled.img`
@@ -47,6 +48,7 @@ const H2 = styled.h2`
   max-width: 70rem;
   margin: 4rem auto;
 `;
+
 
 export default function SearchPhotos() {
     const unsplash = new Unsplash({
@@ -87,13 +89,13 @@ export default function SearchPhotos() {
             </Form>
             <H2>Search Results:</H2>
             <WrapperImg className="card-list">
-                {pics.map((pic) => <div className="card" key={pic.id}>
+                {pics.map((pic) => <div key={pic.id}>
                     <Heart />
                     <Img
                         className="card--image"
                         alt={pic.alt_description}
                         src={pic.urls.full}
-                    ></Img>
+                    ></Img><p className="like"> Amount of Likes ❤️ {pic.likes}</p>
                 </div>)}
             </WrapperImg>
         </>
