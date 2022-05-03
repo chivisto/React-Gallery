@@ -73,7 +73,7 @@ function App() {
       for (let i = 0; i < imgURL.length; i++) {
         let red = imgURL[i];
         saveAs(red, 'image.jpg');
-      }
+      } //TRY USING VAR INSTEAD OF LET TOMORROW
     }
     return <button onClick={downloadImage}>Download</button>
   }
