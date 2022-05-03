@@ -21,7 +21,7 @@ export const FileUpload = () => {
     }
 
     const ImageThumb = ({ image }) => {
-        return <img src={URL.createObjectURL(image)} alt={image.name} width="210px" height="227px" />;
+        return <img src={URL.createObjectURL(image)} alt={image.name} width="267px" height="331px" />;
     };
 
     return (

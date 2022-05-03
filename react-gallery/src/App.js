@@ -64,12 +64,20 @@ function App() {
       .then(res => setImages([...images, ...res.data]))
   }
 
+  const imgURL = images.map((download)=>{   
+    //console.log(download.urls.raw)
+    return download.urls.raw;   
+});   
+
   const Download = () => {
     const downloadImage = () => {
-      saveAs(`${images.image.urls.raw}`, 'image.jpg')
+      saveAs(`${imgURL}`, 'image.jpg')
+      
+      //console.log(imgURL) 
     }
     return <button onClick={downloadImage}>Download</button>
   }
+
 
   return (
     <div className="App">
