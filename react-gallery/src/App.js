@@ -63,13 +63,13 @@ function App() {
       .then(res => setImages([...images, ...res.data]))
   }
 
-  const imgURL = images.map((download) => {
+  const downloadURL = images.map((download) => {
     //console.log(download.urls.full)
     return download.urls.full;
   });
 
   const downloadImage = (index) => {
-    var red = imgURL[index];
+    var red = downloadURL[index];
      saveAs(red, 'image.jpg');    
  }
   
