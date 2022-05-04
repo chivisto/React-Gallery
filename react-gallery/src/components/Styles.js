@@ -46,3 +46,21 @@ export const P = styled.p`
   margin-left: 5px;
   margin-right: 5px;
 `;
+
+export const Button = styled.button`
+border-radius: 5px;
+border: none;
+padding: 5px;
+width: 50%;
+display: flex;
+justify-content: center;
+margin-left: 25%;
+margin-right: 25%;
+margin-top: 5.5px;
+color: #293241;
+background-color: #D3F6DB;
+:hover{
+    background-color: #258ea6;
+    color: white;
+}
+`;

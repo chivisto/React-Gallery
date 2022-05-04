@@ -4,7 +4,7 @@ import { Loader } from './components/Loader';
 import { UnsplashImage } from './components/UnsplashImage';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { saveAs } from 'file-saver';
-import { GlobalStyle, WrapperImg, H1, Div, P } from './components/Styles';
+import { GlobalStyle, WrapperImg, H1, Div, P, Button} from './components/Styles';
 import { FacebookShareButton, RedditShareButton, TwitterShareButton, FacebookIcon, RedditIcon, TwitterIcon } from "react-share";
 import axios from 'axios';
 import SearchPhotos from './components/searchPhotos';
@@ -55,8 +55,8 @@ function App() {
             <Div>
               <Heart />
               <UnsplashImage url={image.urls.thumb} key={image.id} />
-              <p className="user"> Photo shot by: {image.user.name}</p><br />
-              <button onClick={() => { downloadImage(index) }}>Download</button><br />
+              <p> Photo shot by: {image.user.name}</p><br />
+              <Button onClick={() => { downloadImage(index) }}>Download</Button><br />
               <p>Share:</p><br/>
               <P>
               <FacebookShareButton url={image.links.html} quote={"Check out this awesome image!"}>

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Unsplash, { toJson } from "unsplash-js";
 import Heart from './Heart';
-import Download from '../App';
+import saveAs from 'file-saver';
+import { FacebookShareButton, RedditShareButton, TwitterShareButton, FacebookIcon, RedditIcon, TwitterIcon } from "react-share";
+
 
 const Form = styled.form`
     max-width: 70rem;
@@ -30,12 +32,11 @@ const Button = styled.button`
 `;
 
 const WrapperImg = styled.section`
-    max-width: 70rem;
-    margin: 4rem auto;
-    display: grid;
-    grid-gap: 1em;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-auto-rows: 300px;
+max-width: 70rem;
+margin: 4rem auto;
+display: grid;
+grid-gap: 1em;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 `;
 
 const Img = styled.img`
@@ -48,6 +49,45 @@ const H2 = styled.h2`
   max-width: 70rem;
   margin: 4rem auto;
 `;
+
+const Div = styled.div`
+display: flex;
+flex-direction: column;
+margin-bottom: 2rem;
+height: auto;
+width: 100%;
+position: relative;
+padding: 1%;
+border: 2px solid transparent;
+border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+border-image-slice: 1;
+`
+const P = styled.p`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 5px;
+  margin-right: 5px;
+`;
+
+const Button1 = styled.button`
+border-radius: 5px;
+border: none;
+padding: 5px;
+width: 50%;
+display: flex;
+justify-content: center;
+margin-left: 25%;
+margin-right: 25%;
+margin-top: 5.5px;
+color: #293241;
+background-color: #D3F6DB;
+:hover{
+    background-color: #258ea6;
+    color: white;
+}
+  `;
+
 
 
 export default function SearchPhotos() {
@@ -69,6 +109,14 @@ export default function SearchPhotos() {
                 setPics(json.results);
             });
     };
+    const downloadURL = pics.map((download) => {
+        return download.urls.full;
+    });
+
+    const downloadImage = (index) => {
+        var red = downloadURL[index];
+        saveAs(red, 'image.jpg');
+    }
     return (
         <>
             <Form className='form' onSubmit={searchPhotos}>
@@ -88,16 +136,28 @@ export default function SearchPhotos() {
                 </Button>
             </Form>
             <H2>Search Results:</H2>
-            <WrapperImg className="card-list">
-                {pics.map((pic) => <div key={pic.id}>
+            <WrapperImg>
+                {pics.map((pic, index) => <Div key={pic.id}>
                     <Heart />
                     <Img
-                        className="card--image"
                         alt={pic.alt_description}
                         src={pic.urls.full}
                     ></Img>
-                    <p className="like" margin-bottom="30px"> Amount of Likes ❤️ {pic.likes}</p>
-                </div>)}
+                    <p className="like" margin-bottom="30px"> Photo shot by: {pic.user.name}</p>
+                    <Button1 onClick={() => { downloadImage(index) }}>Download</Button1><br />
+                    <p>Share:</p><br />
+                    <P>
+                        <FacebookShareButton url={pic.links.html} quote={"Check out this awesome image!"}>
+                            <FacebookIcon size={40} round={true} />
+                        </FacebookShareButton>
+                        <TwitterShareButton url={pic.links.html} quote={"Check out this awesome image!"}>
+                            <TwitterIcon size={40} round={true} />
+                        </TwitterShareButton>
+                        <RedditShareButton url={pic.links.html} quote={"Check out this awesome image!"}>
+                            <RedditIcon size={40} round={true} />
+                        </RedditShareButton>
+                    </P>
+                </Div>)}
             </WrapperImg>
         </>
     )
