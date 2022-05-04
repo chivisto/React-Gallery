@@ -4,61 +4,12 @@ import { Loader } from './components/Loader';
 import { UnsplashImage } from './components/UnsplashImage';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { saveAs } from 'file-saver';
-
+import { GlobalStyle, WrapperImg, H1, Div, P } from './components/Styles';
 import { FacebookShareButton, RedditShareButton, TwitterShareButton, FacebookIcon, RedditIcon, TwitterIcon } from "react-share";
-
 import axios from 'axios';
-import styled from 'styled-components';
-import { createGlobalStyle } from 'styled-components';
 import SearchPhotos from './components/searchPhotos';
 import Heart from './components/Heart';
 import { FileUpload } from './components/Upload';
-
-const GlobalStyle = createGlobalStyle`
-  *{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-  }
-
-  body{
-    font-family: sans-serif;
-  }
-`;
-
-const WrapperImg = styled.section`
-  max-width: 70rem;
-  margin: 4rem auto;
-  display: grid;
-  grid-gap: 1em;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-`;
-
-const H1 = styled.h1`
-  max-width: 70rem;
-  margin: 4rem auto;
-`;
-
-const Div = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
-  height: auto;
-  width: 100%;
-  position: relative;
-  padding: 1%;
-  border: 2px solid transparent;
-  border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
-  border-image-slice: 1;
-`;
-
-const P = styled.p`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-left: 5px;
-  margin-right: 5px;
-`;
 
 
 function App() {
