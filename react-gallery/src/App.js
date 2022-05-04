@@ -59,7 +59,7 @@ function App() {
     const apiURL = "https://api.unsplash.com";
     const apiKey = "uXbbsQH1xTfKD32n9VZGycYFyH20yIQpSJFha1aAv7s";
     axios
-      .get(`${apiURL}/photos/random?client_id=${apiKey}&count=10`)
+      .get(`${apiURL}/photos/random?client_id=${apiKey}&count=1`)
       .then(res => setImages([...images, ...res.data]))
   }
 
@@ -70,11 +70,12 @@ function App() {
 
   const Download = () => {
     const downloadImage = () => {
+      var red = imgURL;
       for (var i = 0; i < imgURL.length; i++) {
-        var red = imgURL[i];
-        saveAs(red, 'image.jpg');
-      } //TRY USING VAR
-      //saveAs(red, 'image.jpg');
+        console.log(red);
+        //saveAs(red, 'image.jpg');
+      } 
+      //saveAs(red[i], 'image.jpg');
     }
     return <button onClick={downloadImage}>Download</button>
   }
