@@ -68,17 +68,21 @@ function App() {
     return download.urls.full;
   });
 
-  const Download = () => {
-    const downloadImage = () => {
-      var red = imgURL;
-      for (var i = 0; i < imgURL.length; i++) {
-        console.log(red);
-        //saveAs(red, 'image.jpg');
-      } 
-      //saveAs(red[i], 'image.jpg');
-    }
-    return <button onClick={downloadImage}>Download</button>
-  }
+  const downloadImage = (index) => {
+    var red = imgURL[index];
+     saveAs(red, 'image.jpg');    
+ }
+  
+  const shareURL = images.map((share) => {
+    //console.log(download.urls.full)
+    return share.links.self;
+  });
+  
+  const shareImage = (e) => {
+    var green = shareURL[e];
+    //Make this do something in a little 
+ }
+
 
   return (
     <div className="App">
@@ -94,13 +98,14 @@ function App() {
         <H1>Main Feed:</H1>
         <WrapperImg>
           <FileUpload />
-          {images.map(image =>
+          {images.map((image, index, e) =>
           (<>
             <Div>
               <Heart />
               <UnsplashImage url={image.urls.thumb} key={image.id} />
               <p className="like"> Amount of Likes ❤️ {image.likes}</p>
-              <Download />
+              <button onClick={ () => {downloadImage(index)}}>Download</button><br />
+              <button onClick={ () => {shareImage(e)}}>Share</button>
             </Div>
           </>))}
         </WrapperImg>
