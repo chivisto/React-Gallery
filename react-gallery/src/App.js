@@ -75,7 +75,7 @@ function App() {
   
   const shareURL = images.map((share) => {
     //console.log(download.urls.full)
-    return share.links.self;
+    return share.links.html;
   });
   
   const shareImage = (e) => {
