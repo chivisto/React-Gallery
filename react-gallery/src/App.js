@@ -5,6 +5,7 @@ import { UnsplashImage } from './components/UnsplashImage';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { saveAs } from 'file-saver';
 
+import { FacebookShareButton, RedditShareButton, TwitterShareButton, FacebookIcon, RedditIcon, TwitterIcon } from "react-share";
 
 import axios from 'axios';
 import styled from 'styled-components';
@@ -45,6 +46,18 @@ const Div = styled.div`
   height: auto;
   width: 100%;
   position: relative;
+  padding: 1%;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+  border-image-slice: 1;
+`;
+
+const P = styled.p`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 5px;
+  margin-right: 5px;
 `;
 
 
@@ -64,25 +77,13 @@ function App() {
   }
 
   const downloadURL = images.map((download) => {
-    //console.log(download.urls.full)
     return download.urls.full;
   });
 
   const downloadImage = (index) => {
     var red = downloadURL[index];
-     saveAs(red, 'image.jpg');    
- }
-  
-  const shareURL = images.map((share) => {
-    //console.log(download.urls.full)
-    return share.links.html;
-  });
-  
-  const shareImage = (e) => {
-    var green = shareURL[e];
-    //Make this do something in a little 
- }
-
+    saveAs(red, 'image.jpg');
+  }
 
   return (
     <div className="App">
@@ -98,14 +99,25 @@ function App() {
         <H1>Main Feed:</H1>
         <WrapperImg>
           <FileUpload />
-          {images.map((image, index, e) =>
+          {images.map((image, index) =>
           (<>
             <Div>
               <Heart />
               <UnsplashImage url={image.urls.thumb} key={image.id} />
-              <p className="like"> Amount of Likes ❤️ {image.likes}</p>
-              <button onClick={ () => {downloadImage(index)}}>Download</button><br />
-              <button onClick={ () => {shareImage(e)}}>Share</button>
+              <p className="user"> Photo shot by: {image.user.name}</p><br />
+              <button onClick={() => { downloadImage(index) }}>Download</button><br />
+              <p>Share:</p><br/>
+              <P>
+              <FacebookShareButton url={image.links.html} quote={"Check out this awesome image!"}>
+                <FacebookIcon size={40} round={true} />
+              </FacebookShareButton>
+              <TwitterShareButton url={image.links.html} quote={"Check out this awesome image!"}>
+                <TwitterIcon size={40} round={true} />
+              </TwitterShareButton>
+              <RedditShareButton url={image.links.html} quote={"Check out this awesome image!"}>
+                <RedditIcon size={40} round={true} />
+              </RedditShareButton>
+              </P>
             </Div>
           </>))}
         </WrapperImg>
