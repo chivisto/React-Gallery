@@ -23,7 +23,7 @@ function App() {
     const apiURL = "https://api.unsplash.com";
     const apiKey = "uXbbsQH1xTfKD32n9VZGycYFyH20yIQpSJFha1aAv7s";
     axios
-      .get(`${apiURL}/photos/random?client_id=${apiKey}&count=1`)
+      .get(`${apiURL}/photos/random?client_id=${apiKey}&count=5`)
       .then(res => setImages([...images, ...res.data]))
   }
 
