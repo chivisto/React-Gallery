@@ -62,5 +62,6 @@ background-color: #D3F6DB;
 :hover{
     background-color: #258ea6;
     color: white;
+    cursor: pointer;
 }
 `;
